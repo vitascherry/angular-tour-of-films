@@ -1,0 +1,47 @@
+<div *ngIf="film">
+	<div class="film-cover">
+		<img [src]="getFilmCover(film)" alt="Cover">
+	</div>
+	<div class="film-details">
+		<h1>{{film.name}} details!</h1>
+		<ul>
+			<li>
+				<h2>
+					<label>id: </label>
+					{{film.id}}
+				</h2>
+			</li>
+			<li>
+				<h2>
+					<label>name: </label>
+					{{film.name}}
+				</h2>
+			</li>
+			<li>
+				<h2>
+					<label>year: </label>
+					{{film.year}}
+				</h2>
+			</li>
+			<li>
+				<h2>
+					<label>director: </label>
+					{{film.director}}
+				</h2>
+			</li>
+			<li>
+				<h2>
+					<label>actors: </label>
+					<ul class="film-actors-list">
+						<li *ngFor="let actor of film.actors">
+							{{actor.id}}. {{actor.name}}
+						</li>
+					</ul>
+				</h2>
+			</li>
+		</ul>
+	</div>
+	<nav>
+		<a (click)="goBack()">Back</a>
+	</nav>
+</div>

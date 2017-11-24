@@ -1,0 +1,24 @@
+<h3>{{detailed_list_title}}</h3>
+<ul class="films-detailed-list">
+	<li *ngFor="let film of films">
+		<div class="film-info">
+			<div class="film-signature">
+				<div class="id">{{film.id}}</div>{{film.name}}
+			</div>
+			<div class="film-description">
+				<p>Rating: {{film.rating}}</p>
+				<p>Year: {{film.year}}</p>
+				<p>Director: {{film.director}}</p>
+				<p>Cast:</p>
+				<ul class="film-actors-list">
+					<li *ngFor="let actor of film.actors">
+						{{actor.id}}. {{actor.name}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="film-cover">
+			<img [src]="getFilmCover(film)" alt="Cover">
+		</div>
+	</li>
+</ul>

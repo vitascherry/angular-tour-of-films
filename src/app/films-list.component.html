@@ -1,0 +1,7 @@
+<h3>{{list_title}}</h3>
+<ul class="films-list">
+	<li *ngFor="let film of films"
+		(click)="gotoDetails(film)">
+		<span class="id">{{film.id}}</span> {{film.name}} ({{film.year}})
+	</li>
+</ul>
