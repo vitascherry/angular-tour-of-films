@@ -17,10 +17,6 @@ export class FilmService {
 	constructor(private http: HttpClient,
 		private messageService: MessageService) { }
 	
-	getFilmsUrl(): string {
-		return this.filmsUrl;
-	}
-	
 	/** GET films from the server */
 	getFilms(): Observable<Film[]> {
 		// Todo: send the message _after_ fetching the films

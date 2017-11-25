@@ -9,14 +9,14 @@ import { of }                      from 'rxjs/observable/of';
 import { catchError, tap }         from 'rxjs/operators';
  
 import { Film }                    from './film';
-import { FilmService }             from './film.service';
 import { MessageService }          from './message.service';
 
 @Injectable()
 export class FilmSearchService {
+	
+	private filmsUrl = 'http://localhost:8080/api/film';  // URL to web api
  
 	constructor(private http: HttpClient,
-		private filmService: FilmService,
 		private messageService: MessageService) {}
  
 	/* GET films whose name contains search term */
@@ -25,8 +25,7 @@ export class FilmSearchService {
 			// if not search term, return empty film array.
 			return of([]);
 		}
-		const url = this.filmService.getFilmsUrl();
-		return this.http.get<Film[]>(`${url}/?name=${term}`).pipe(
+		return this.http.get<Film[]>(`${this.filmsUrl}/?name=${term}`).pipe(
 			tap(_ => this.log(`found films matching "${term}"`)),
 			catchError(this.handleError<Film[]>('searchFilm', []))
 		);
@@ -45,15 +44,14 @@ export class FilmSearchService {
 	 */
 	private handleError<T> (operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
+			// TODO: send the error to remote logging infrastructure
+			console.error(error); // log to console instead
  
-		// TODO: send the error to remote logging infrastructure
-		console.error(error); // log to console instead
+			// TODO: better job of transforming error for user consumption
+			this.log(`${operation} failed: ${error.message}`);
  
-		// TODO: better job of transforming error for user consumption
-		this.log(`${operation} failed: ${error.message}`);
- 
-		// Let the app keep running by returning an empty result.
-		return of(result as T);
+			// Let the app keep running by returning an empty result.
+			return of(result as T);
 		};
 	}
 }
