@@ -17,13 +17,9 @@ export class FilmsListComponent implements OnInit {
 	constructor(private router: Router,
 		private filmService: FilmService) {}
 	
-	getFilms(): void {
+	ngOnInit(): void {
 		this.filmService.getFilms()
 			.subscribe(films => this.films = films);
-	}
-	
-	ngOnInit(): void {
-		this.getFilms();
 	}
 	
 	gotoDetails(film: Film): void {

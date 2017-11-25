@@ -8,13 +8,11 @@ import { catchError, map, tap }    from 'rxjs/operators';
 import { Film }                    from './film';
 import { MessageService }          from './message.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable()
 export class FilmService {
-	private filmsUrl = 'api/films';  // URL to web api
+	private filmsUrl = 'http://localhost:8080/api/film';  // URL to web api
 	
 	constructor(private http: HttpClient,
 		private messageService: MessageService) { }
@@ -28,7 +26,7 @@ export class FilmService {
 		// Todo: send the message _after_ fetching the films
 		this.messageService.add('FilmService: fetched films');
 		return this.http.get<Film[]>(this.filmsUrl)
-			.pipe(tap(films => this.log(`fetched films`)),
+			.pipe(tap(films => console.log(films)),
 				catchError(this.handleError('getFilms', []))
 			);
 	}
