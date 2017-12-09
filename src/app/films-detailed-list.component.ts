@@ -10,7 +10,6 @@ import { FilmService } from './film.service';
 })
 
 export class FilmsDetailedListComponent implements OnInit {
-	detailed_list_title = 'Top 10 best films in history';
 	imagesUrl = './assets/images/small/';
 	films: Film[];
 	
@@ -26,6 +25,6 @@ export class FilmsDetailedListComponent implements OnInit {
 	}
 	
 	getFilmCover(film: Film): string {
-		return this.imagesUrl + film.id + ".jpg";
+		return this.imagesUrl + film.id + '.jpg';
 	}
 }

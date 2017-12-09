@@ -33,7 +33,7 @@ export class FilmDetailsComponent implements OnInit {
 	}
 	
 	getFilmCover(film: Film): string {
-		return this.imagesUrl + film.id + ".jpg";
+		return this.imagesUrl + film.id + '.jpg';
 	}
 	
 	////// SAVE METHODS //////

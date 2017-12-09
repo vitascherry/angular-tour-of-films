@@ -1,4 +1,4 @@
-<h3>{{detailed_list_title}}</h3>
+<h3>Top {{this.films.length}} best films in history</h3>
 <ul class="films-detailed-list">
 	<li *ngFor="let film of films">
 		<div class="film-info">
@@ -11,8 +11,8 @@
 				<p>Director: {{film.director}}</p>
 				<p>Cast:</p>
 				<ul class="film-actors-list">
-					<li *ngFor="let actor of film.actors">
-						{{actor.id}}. {{actor.name}}
+					<li *ngFor="let actor of film.actors; let counter = index">
+						{{counter + 1}}. {{actor.name}}
 					</li>
 				</ul>
 			</div>

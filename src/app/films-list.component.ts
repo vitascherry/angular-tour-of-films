@@ -11,7 +11,6 @@ import { FilmService }   	  from './film.service';
 })
 
 export class FilmsListComponent implements OnInit {
-	list_title = 'Top 10 best films in history';
 	films: Film[];
 	
 	constructor(private router: Router,

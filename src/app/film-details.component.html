@@ -3,7 +3,6 @@
 		<img [src]="getFilmCover(film)" alt="Cover">
 	</div>
 	<div class="film-details">
-		<h1>{{film.name}} details!</h1>
 		<ul>
 			<li>
 				<h2>
@@ -33,8 +32,8 @@
 				<h2>
 					<label>actors: </label>
 					<ul class="film-actors-list">
-						<li *ngFor="let actor of film.actors">
-							{{actor.id}}. {{actor.name}}
+						<li *ngFor="let actor of film.actors; let counter = index">
+							{{counter + 1}}. {{actor.name}}
 						</li>
 					</ul>
 				</h2>

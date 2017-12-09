@@ -9,7 +9,6 @@ import { FilmService }       from './film.service';
 	styleUrls: ['./films-dashboard.component.css']
 })
 export class FilmsDashboardComponent implements OnInit {
-	dashboard_title = 'Top 10 best films in history';
 	films: Film[];
 
 	constructor(private filmService: FilmService) { }
