@@ -4,10 +4,12 @@
 	margin-bottom: 1rem;
 }
 .films-list li {
-	cursor: pointer;
 	background-color: #EEE;
 }
 .films-list li:hover {
 	color: #607D8B;
 	background-color: #DDD;
+}
+.films li a {
+	cursor: pointer;
 }

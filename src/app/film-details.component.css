@@ -1,2 +1,19 @@
+.film-cover {
+	position: relative;
+	float: left;
+}
 
+.film-details {
+	display: inline-block;
+}
+.film-details ul {
+	list-style-type: none;
+}
 
+star {
+	font-size: 1.5rem;
+	color: #b0c4de;
+}
+.filled {
+	color: gold;
+}

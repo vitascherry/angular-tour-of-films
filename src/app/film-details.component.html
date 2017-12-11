@@ -5,42 +5,45 @@
 	<div class="film-details">
 		<ul>
 			<li>
-				<h2>
-					<label>id: </label>
-					{{film.id}}
-				</h2>
+				<label>id: </label>
+				{{film.id}}
 			</li>
 			<li>
-				<h2>
-					<label>name: </label>
-					{{film.name}}
-				</h2>
+				<label>name: </label>
+				{{film.name}}
 			</li>
 			<li>
-				<h2>
-					<label>year: </label>
-					{{film.year}}
-				</h2>
+				<label>year: </label>
+				{{film.year}}
 			</li>
 			<li>
-				<h2>
-					<label>director: </label>
-					{{film.director}}
-				</h2>
+				<label>director: </label>
+				{{film.director}}
 			</li>
 			<li>
-				<h2>
-					<label>actors: </label>
-					<ul class="film-actors-list">
+				<label>actors: </label>
+				<div class="film-actors">
+					<ul>
 						<li *ngFor="let actor of film.actors; let counter = index">
 							{{counter + 1}}. {{actor.name}}
 						</li>
 					</ul>
-				</h2>
+				</div>
 			</li>
 		</ul>
 	</div>
-	<film-rating></film-rating>
+	<div class="film-rating">
+		<p>Rate this film:</p>
+		<div>
+			<ngb-rating [(rate)]="film.rating" (rateChange)="updateFilm()">
+				<ng-template let-fill="fill" let-index="index">
+					<span class="star" [class.filled]="fill === 100">&#9733;</span>
+				</ng-template>
+			</ngb-rating>
+		</div>
+		<hr>
+		<pre>Rate: <b>{{film.rating}}</b></pre>
+	</div>
 	<div class="film-comments">
 		<h2>Comments</h2>
 		<ul>

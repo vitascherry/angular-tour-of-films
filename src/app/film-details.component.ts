@@ -11,7 +11,7 @@ import { Film } 					from './film';
 })
 export class FilmDetailsComponent implements OnInit {
 	film: Film;
-	imagesUrl = './assets/images/';
+	imagesUrl = './assets/images/small';
 	
 	constructor(private filmService: FilmService,
 		private route: ActivatedRoute) {}
@@ -27,14 +27,13 @@ export class FilmDetailsComponent implements OnInit {
 	}
 	
 	getFilmCover(film: Film): string {
-		return this.imagesUrl + film.id + '.jpg';
+		return `${this.imagesUrl}/${film.id}.jpg`;
 	}
 	
-	////// SAVE METHODS //////
+	////// UPDATE METHODS //////
 	
-	/*save(): void {
-		this.filmService.updateFilm(this.film)
-			.subscribe(() => this.goBack());
-	}*/
+	updateFilm(): void {
+		this.filmService.updateFilm(this.film);
+	}
 }
 

@@ -1,1 +1,18 @@
 /* General styles */
+.content {
+	background: #fff;
+	position: relative;
+	margin: 0 auto;
+	padding-top: 250px !important;
+	min-width: 980px;
+}
+.wrapper {
+	background-color: #fff !important;
+	position: relative;
+	margin: 0 auto;
+	width: 1000px;
+}
+
+.title, .navigation-menu {
+	text-align: center;
+}
