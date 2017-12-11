@@ -37,7 +37,6 @@ export class FilmRatingComponent implements OnInit {
 	
 	updateRating(): void {
 		this.film.rating = this.currentRating;
-		console.log("film rating updated!");
 		this.filmService.updateFilm(this.film);
 	}
 }

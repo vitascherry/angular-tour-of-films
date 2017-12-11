@@ -87,10 +87,11 @@ export class FilmService {
 	
 	/** POST: update the film on the server */
 	updateFilm (film: Film): Observable<any> {
-		return this.http.post(this.filmsUrl, film, httpOptions).pipe(
-			tap(_ => this.log(`updated film id=${film.id}`)),
-			catchError(this.handleError<any>('updateFilm'))
-		);
+		const url = `${this.filmsUrl}/${film.id}`;	
+		return this.http.post(url, film, httpOptions) // ...using post request
+					.pipe(tap((film: Film) => this.log(`updated film id=${film.id}`)),
+						catchError(this.handleError<any>('updateFilm')))
+					.subscribe();
 	}
 	
 	/** DELETE: delete the film from the server */
