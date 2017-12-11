@@ -28,10 +28,6 @@ export class FilmDetailsComponent implements OnInit {
 			.subscribe(film => this.film = film);
 	}
 	
-	goBack(): void {
-		this.location.back();
-	}
-	
 	getFilmCover(film: Film): string {
 		return this.imagesUrl + film.id + '.jpg';
 	}
