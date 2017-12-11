@@ -1,18 +1,2 @@
-/* Film cover*/
-.film-cover {
-	margin: 26.800px 0 0 0;
-	padding: 0;
-}
 
-/* Film details list */
-ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-label {
-  display: inline-block;
-  color: #607D8B;
-  font-weight: bold;
-}
 

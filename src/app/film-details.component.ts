@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } 			from '@angular/router';
-import { Location } 				from '@angular/common';
 
 import { FilmService } 			from './film.service';
 import { Film } 					from './film';
@@ -15,8 +14,7 @@ export class FilmDetailsComponent implements OnInit {
 	imagesUrl = './assets/images/';
 	
 	constructor(private filmService: FilmService,
-		private route: ActivatedRoute,
-		private location: Location) {}
+		private route: ActivatedRoute) {}
 	
 	ngOnInit(): void {
 		this.getFilm();

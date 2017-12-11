@@ -1,0 +1,11 @@
+<p>Rate this film:</p>
+
+<div>
+<ngb-rating [(rate)]="currentRating" (rateChange)="updateRating()">
+  <ng-template let-fill="fill" let-index="index">
+    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+  </ng-template>
+</ngb-rating>
+</div>
+<hr>
+<pre>Rate: <b>{{currentRating}}</b></pre>

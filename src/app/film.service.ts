@@ -85,13 +85,13 @@ export class FilmService {
 		);
 	}*/
 	
-	/** PUT: update the film on the server */
-	/*updateFilm (film: Film): Observable<any> {
-		return this.http.put(this.filmsUrl, film, httpOptions).pipe(
+	/** POST: update the film on the server */
+	updateFilm (film: Film): Observable<any> {
+		return this.http.post(this.filmsUrl, film, httpOptions).pipe(
 			tap(_ => this.log(`updated film id=${film.id}`)),
 			catchError(this.handleError<any>('updateFilm'))
 		);
-	}*/
+	}
 	
 	/** DELETE: delete the film from the server */
 	/*deleteFilm (film: Film | number): Observable<Film> {
