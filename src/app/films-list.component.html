@@ -1,6 +1,10 @@
 <ul class="films-list">
 	<li *ngFor="let film of films; let counter = index"
 		(click)="gotoDetails(film)">
-		<span class="id">{{counter + 1}}</span> {{film.name}} ({{film.year}})
+		<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+			<ngb-panel title="{{counter + 1}}. {{film.name}} ({{film.year}})">
+				<ng-template ngbPanelContent></ng-template>
+			</ngb-panel>
+		</ngb-accordion>
 	</li>
 </ul>
