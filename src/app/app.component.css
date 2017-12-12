@@ -1,18 +1,52 @@
 /* General styles */
-.content {
-	background: #fff;
+.wrapper {
+	background-image: url(../assets/images/bg.jpg);
 	position: relative;
 	margin: 0 auto;
 	padding-top: 250px !important;
 	min-width: 980px;
+	height: 100%;
 }
-.wrapper {
+.content {
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+	box-shadow: 0 0 10px rgba(0,0,0,0.4);
 	background-color: #fff !important;
 	position: relative;
 	margin: 0 auto;
 	width: 1000px;
+	z-index: 2;
+	min-height: 100vh;
+	height: 100%;
 }
 
-.title, .navigation-menu {
+.header, .navigation-menu, .footer {
 	text-align: center;
+}
+
+.header {
+	margin: 0 auto;
+	background: #313131;
+	padding: 10px 0 10px 0;
+}
+.header h1 {
+	color: #777;
+}
+
+.navigation-menu {
+	margin: auto 0;
+	padding: 10px 0 0 0;
+}
+.navigation-menu nav a {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.footer {
+	margin: 0 auto;
+	width: 1000px;
+	background: #313131;
+	color: #777;
+	line-height: 16px;
+	padding: 20px 0;
 }

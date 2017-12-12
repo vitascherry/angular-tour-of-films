@@ -1,56 +1,78 @@
-<div *ngIf="film">
-	<div class="film-cover">
-		<img [src]="getFilmCover(film)" alt="Cover">
-	</div>
-	<div class="film-details">
-		<ul>
-			<li>
-				<label>id: </label>
-				{{film.id}}
-			</li>
-			<li>
-				<label>name: </label>
-				{{film.name}}
-			</li>
-			<li>
-				<label>year: </label>
-				{{film.year}}
-			</li>
-			<li>
-				<label>director: </label>
-				{{film.director}}
-			</li>
-			<li>
-				<label>actors: </label>
-				<div class="film-actors">
-					<ul>
-						<li *ngFor="let actor of film.actors; let counter = index">
-							{{counter + 1}}. {{actor.name}}
-						</li>
-					</ul>
-				</div>
-			</li>
-		</ul>
-	</div>
-	<div class="film-rating">
-		<p>Rate this film:</p>
-		<div>
-			<ngb-rating [(rate)]="film.rating" (rateChange)="updateFilm()">
-				<ng-template let-fill="fill" let-index="index">
-					<span class="star" [class.filled]="fill === 100">&#9733;</span>
-				</ng-template>
-			</ngb-rating>
+<div class="container">
+	<div *ngIf="film">
+		<div class="film-details">
+			<div class="film-cover">
+				<img [src]="getFilmCoverUrl(film)" alt="Cover">
+			</div>
+			<div class="film-attributes">
+				<ul>
+					<li>
+						<label>name: </label>
+						{{film.name}}
+					</li>
+					<li>
+						<label>year: </label>
+						{{film.year}}
+					</li>
+					<li>
+						<label>director: </label>
+						{{film.director}}
+					</li>
+					<li>
+						<label>actors: </label>
+						<div class="film-actors">
+							<ul>
+								<li *ngFor="let actor of film.actors; let counter = index">
+									{{counter + 1}}. {{actor.name}}
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="film-rating">
+			<p>Rate this film:</p>
+			<div>
+				<ngb-rating [(rate)]="film.rating" (rateChange)="updateFilm()">
+					<ng-template let-fill="fill" let-index="index">
+						<span class="star" [class.filled]="fill === 100">&#9733;</span>
+					</ng-template>
+				</ngb-rating>
+				Rate: <b>{{film.rating}}</b>
+			</div>
 		</div>
 		<hr>
-		<pre>Rate: <b>{{film.rating}}</b></pre>
-	</div>
-	<div class="film-comments">
-		<h2>Comments</h2>
-		<ul>
-			<li *ngFor="let comment of film.comments">
+		<div class="comment-form">
+			<form class="card comment-form" (ngSubmit)="onSubmit()">
+				<fieldset [disabled]="isSubmitting">
+					<div class="card-header">
+						<textarea class="form-control"
+                  placeholder="Enter name..."
+									rows="1"
+                  [formControl]="commentAuthor">
+						</textarea>
+					</div>
+					<div class="card-block">
+						<textarea class="form-control"
+                  placeholder="Write a comment..."
+                  rows="4"
+                  [formControl]="commentBody">
+						</textarea>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-sm btn-primary" type="submit">Post Comment</button>
+					</div>
+         </fieldset>
+       </form>
+		</div>
+		<div class="film-comments">
+			<ul>
+				<li *ngFor="let comment of film.comments">
 					{{comment.author}}, <small>{{comment.posted | date:'yyyy-MM-dd HH:mm'}}</small>
 					<p>{{comment.text}}</p>
-			</li>
-		</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

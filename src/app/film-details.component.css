@@ -1,19 +1,32 @@
+.film-details {
+	margin: 0 0 0 0;
+}
+
 .film-cover {
 	position: relative;
 	float: left;
 }
 
-.film-details {
+.film-attributes {
 	display: inline-block;
 }
-.film-details ul {
+.film-attributes ul {
 	list-style-type: none;
 }
 
-star {
-	font-size: 1.5rem;
+.star {
+	font-size: 1.64rem;
 	color: #b0c4de;
 }
 .filled {
 	color: gold;
 }
+
+.film-comments {
+	margin: 1rem 0 1rem 0;
+}
+.film-comments ul {
+	list-style-type: none;
+}
+
+
