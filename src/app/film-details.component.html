@@ -12,18 +12,28 @@
 					</li>
 					<li>
 						<label>year: </label>
-						{{film.year}}
+						<a href="#">{{film.year}}</a>
 					</li>
 					<li>
 						<label>director: </label>
-						{{film.director}}
+						<a href="#">{{film.director}}</a>
+					</li>
+					<li>
+						<label>genres: </label>
+						<div class="film-genres">
+							<ul>
+								<li *ngFor="let genre of film.genres">
+									<a href="#">{{genre.name}}</a>
+								</li>
+							</ul>
+						</div>
 					</li>
 					<li>
 						<label>actors: </label>
 						<div class="film-actors">
 							<ul>
-								<li *ngFor="let actor of film.actors; let counter = index">
-									{{counter + 1}}. {{actor.name}}
+								<li *ngFor="let actor of film.actors">
+									<a href="#">{{actor.name}}</a>
 								</li>
 							</ul>
 						</div>

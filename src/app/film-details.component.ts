@@ -5,7 +5,9 @@ import { Pipe,
 		
 import { DatePipe }                        from '@angular/common';
 
-import { FormControl }                     from '@angular/forms';
+import { FormControl,
+		FormsModule,
+		ReactiveFormsModule }             from '@angular/forms';
 		
 import { ActivatedRoute } 			       from '@angular/router';
 

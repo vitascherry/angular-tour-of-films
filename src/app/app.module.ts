@@ -1,7 +1,8 @@
 import { NgModule }                       from '@angular/core';
 import { NgbModule }                      from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule }                  from '@angular/platform-browser';
-import { FormsModule }                    from '@angular/forms'; // <-- NgModel lives here
+import { ReactiveFormsModule,
+		FormsModule }                    from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }               from '@angular/common/http';
 
 import { AppComponent }                   from './app.component';
@@ -19,6 +20,7 @@ import { MessageComponent }               from './message.component';
 		NgbModule.forRoot(),
 		BrowserModule,
 		FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
+		ReactiveFormsModule,
 		AppRoutingModule,
 		HttpClientModule
 	],

@@ -1,6 +1,7 @@
 /* General styles */
 .wrapper {
 	background-image: url(../assets/images/bg.jpg);
+	background-repeat: repeat;
 	position: relative;
 	margin: 0 auto;
 	padding-top: 250px !important;
