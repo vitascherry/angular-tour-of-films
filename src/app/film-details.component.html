@@ -1,85 +1,131 @@
 <div class="container">
 	<div *ngIf="film">
 		<div class="film-details">
+			<div class="film-title">
+				<h1>{{film.name}}</h1>
+			</div>
 			<div class="film-cover">
-				<img [src]="getFilmCoverUrl(film)" alt="Cover">
+				<img [src]="getFilmCoverUrl()">
 			</div>
 			<div class="film-attributes">
-				<ul>
-					<li>
-						<label>name: </label>
-						{{film.name}}
-					</li>
-					<li>
-						<label>year: </label>
-						<a href="#">{{film.year}}</a>
-					</li>
-					<li>
-						<label>director: </label>
-						<a href="#">{{film.director}}</a>
-					</li>
-					<li>
-						<label>genres: </label>
-						<div class="film-genres">
-							<ul>
-								<li *ngFor="let genre of film.genres">
+				<table>
+					<tbody>
+						<tr>
+							<td class="l">
+								<label>year:</label>
+							</td>
+							<td>
+								<a href="#">{{film.year}}</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="l">
+								<label>director:</label>
+							</td>
+							<td>
+								<a href="#">{{film.director}}</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="l">
+								<label>genres:</label>
+							</td>
+							<td>
+								<span *ngFor="let genre of film.genres; let counter = index;">
 									<a href="#">{{genre.name}}</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<label>actors: </label>
-						<div class="film-actors">
-							<ul>
-								<li *ngFor="let actor of film.actors">
+									<span *ngIf="counter < film.genres.length-1">, </span>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="l">
+								<label>actors:</label>
+							</td>
+							<td>
+								<span *ngFor="let actor of film.actors; let counter = index;">
 									<a href="#">{{actor.name}}</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-				</ul>
+									<span *ngIf="counter < film.actors.length-1">, </span>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
+		
+		<div class="film-description">
+			<h2>Summary</h2>
+			<p>{{film.description}}</p>
+		</div>
+		
+		<hr>
+		
+		<div class="film-trailer">
+			<h2>Trailer</h2>
+			<iframe width="560" height="315" [src]="getFilmTrailerUrl()" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+		</div>
+		
+		<hr>
+		
 		<div class="film-rating">
-			<p>Rate this film:</p>
+			<h2>Rating</h2>
 			<div>
 				<ngb-rating [(rate)]="film.rating" (rateChange)="updateFilm()">
 					<ng-template let-fill="fill" let-index="index">
 						<span class="star" [class.filled]="fill === 100">&#9733;</span>
 					</ng-template>
 				</ngb-rating>
-				Rate: <b>{{film.rating}}</b>
+				<span class="rate">{{film.rating}}/10</span>
 			</div>
 		</div>
+		
 		<hr>
+		<h2>Reviews</h2>
+		
 		<div class="comment-form">
-			<form class="card comment-form" (ngSubmit)="onSubmit()">
-				<fieldset [disabled]="isSubmitting">
-					<div class="card-header">
-						<textarea class="form-control"
-                  placeholder="Enter name..."
-									rows="1"
-                  [formControl]="commentAuthor">
-						</textarea>
-					</div>
+			<form novalidate class="card comment-form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
 					<div class="card-block">
-						<textarea class="form-control"
-                  placeholder="Write a comment..."
-                  rows="4"
-                  [formControl]="commentBody">
-						</textarea>
-					</div>
-					<div class="card-footer">
+						<div class="form-group"
+								[ngClass]="{
+									'has-danger': commentAuthor.invalid && (commentAuthor.dirty || commentAuthor.touched),
+									'has-success': commentAuthor.valid && (commentAuthor.dirty || commentAuthor.touched)
+								}">
+							<input type="text"
+										class="form-control"
+										required
+										placeholder="Enter name..."
+										rows="1"
+										[formControl]="commentAuthor">
+							<div class="form-control-feedback"
+									*ngIf="commentAuthor.errors && (commentAuthor.dirty || commentAuthor.touched)">
+								<p *ngIf="commentAuthor.errors.required">Name is required</p>
+							</div>
+						</div>
+						<div class="form-group"
+								[ngClass]="{
+									'has-danger': commentBody.invalid && (commentBody.dirty || commentBody.touched),
+									'has-success': commentBody.valid && (commentBody.dirty || commentBody.touched)
+								}">
+							<textarea class="form-control"
+											placeholder="Write a comment..."
+											rows="4"
+											[formControl]="commentBody"
+											required>
+							</textarea>
+							<div class="form-control-feedback"
+									*ngIf="commentBody.errors && (commentBody.dirty || commentBody.touched)">
+								<p *ngIf="commentBody.errors.required">Comment body is required</p>
+							</div>
+						</div>
 						<button class="btn btn-sm btn-primary" type="submit">Post Comment</button>
 					</div>
-         </fieldset>
        </form>
 		</div>
+		
 		<div class="film-comments">
 			<ul>
 				<li *ngFor="let comment of film.comments">
-					{{comment.author}}, <small>{{comment.posted | date:'yyyy-MM-dd HH:mm'}}</small>
+					{{comment.author}}, <span>{{comment.posted | date:'yyyy-MM-dd HH:mm'}}</span>
 					<p>{{comment.text}}</p>
 				</li>
 			</ul>

@@ -5,6 +5,8 @@ import { Observable }              from 'rxjs/Observable';
 import { of }                      from 'rxjs/observable/of';
 import { catchError, map, tap }    from 'rxjs/operators';
 
+import { environment }             from '../environments/environment';
+
 import { Film }                    from './film';
 import { MessageService }          from './message.service';
 
@@ -12,7 +14,8 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 
 @Injectable()
 export class FilmService {
-	private filmsUrl = 'http://localhost:8080/api/film';  // URL to web api
+	
+	private filmsUrl = environment.api_url;  // URL to web api
 	
 	constructor(private http: HttpClient,
 		private messageService: MessageService) { }

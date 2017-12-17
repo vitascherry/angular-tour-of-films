@@ -7,6 +7,8 @@ export class Film {
 	name: string;
 	year: number;
 	director: string;
+	description: string;
+	trailer: string;
 	genres: Genre[];
 	actors: Actor[];
 	comments: Comment[];

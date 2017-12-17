@@ -21,16 +21,16 @@
 	height: 100%;
 }
 
-.header, .navigation-menu, .footer {
+header, .navigation-menu, footer {
 	text-align: center;
 }
 
-.header {
+header {
 	margin: 0 auto;
 	background: #313131;
 	padding: 10px 0 10px 0;
 }
-.header h1 {
+header h1 {
 	color: #777;
 }
 
@@ -43,7 +43,7 @@
 	margin-bottom: 0;
 }
 
-.footer {
+footer {
 	margin: 0 auto;
 	width: 1000px;
 	background: #313131;

@@ -1,19 +1,65 @@
+.film-title {
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 30px;
+	margin-bottom: 1rem;
+}
+
+.film-details:after, .film-cover:after {
+	display: block;
+	content: "";
+	clear: both;
+}
 .film-details {
-	margin: 0 0 0 0;
+	margin-top: 1rem;
+	float: left;
+	width: 100%;
 }
 
 .film-cover {
-	position: relative;
 	float: left;
+	border-radius: 2px;
+	background: #fff;
+	border: 1px solid #ddd;
+	min-height: 70px;
+	padding: 5px;
+	position: relative;
+	box-sizing: border-box;
+	margin-right: 1rem;
+	margin-bottom: 20px;
 }
 
-.film-attributes {
-	display: inline-block;
+.film-attributes table {
+	border-collapse: collapse;
 }
-.film-attributes ul {
-	list-style-type: none;
+.film-attributes table td.l {
+	color: #000;
+	font-weight: bold;
+	width: 130px;
+}
+.film-attributes table td {
+	padding: 2px 0;
+	vertical-align: top;
+	text-align: left;
 }
 
+.film-descripn h2 {
+	color: #000;
+	font-size: 22px;
+	line-height: 22px;
+}
+.film-description p {
+	font-size: 14px;
+	color: #444;
+	line-height: 22px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+}
+
+.rate {
+	font-size: 1.64rem;
+	color: #000;
+}
 .star {
 	font-size: 1.64rem;
 	color: #b0c4de;
@@ -29,4 +75,6 @@
 	list-style-type: none;
 }
 
-
+.form-control-feedback {
+	color: #f00;
+}

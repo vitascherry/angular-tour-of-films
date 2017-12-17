@@ -7,14 +7,16 @@ import 'rxjs/add/operator/map';
 
 import { of }                      from 'rxjs/observable/of';
 import { catchError, tap }         from 'rxjs/operators';
- 
+
+import { environment }             from '../environments/environment';
+
 import { Film }                    from './film';
 import { MessageService }          from './message.service';
 
 @Injectable()
 export class FilmSearchService {
 	
-	private filmsUrl = 'http://localhost:8080/api/film';  // URL to web api
+	private filmsUrl = environment.api_url;  // URL to web api
  
 	constructor(private http: HttpClient,
 		private messageService: MessageService) {}
