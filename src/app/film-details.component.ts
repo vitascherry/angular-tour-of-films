@@ -53,6 +53,25 @@ export class FilmDetailsComponent implements OnInit {
 			author: this.commentAuthor,
 			body: this.commentBody
 		});
+		this.commentForm.valueChanges.
+				subscribe(form => {
+					sessionStorage.setItem('form', JSON.stringify(form));
+				});
+		let formValues = sessionStorage.getItem('form');
+		if (formValues) {
+			this.applyFormValues(this.commentForm, JSON.parse(formValues));
+		}
+	}
+	
+	private applyFormValues (group, formValues) {
+		Object.keys(formValues).forEach(key => {
+			let formControl = <FormControl>group.controls[key];
+			if (formControl instanceof FormGroup) {
+				this.applyFormValues(formControl, formValues[key]);
+			} else {
+				formControl.setValue(formValues[key]);
+			}
+		});
 	}
 	
 	getFilm(): void {

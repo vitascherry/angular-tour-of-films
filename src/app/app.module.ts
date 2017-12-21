@@ -1,8 +1,10 @@
 import { NgModule }                       from '@angular/core';
 import { NgbModule }                      from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule }                  from '@angular/platform-browser';
+
 import { ReactiveFormsModule,
 		FormsModule }                    from '@angular/forms'; // <-- NgModel lives here
+		
 import { HttpClientModule }               from '@angular/common/http';
 
 import { AppComponent }                   from './app.component';
