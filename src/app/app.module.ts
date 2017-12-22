@@ -16,6 +16,7 @@ import { FilmSearchService }              from './film-search.service';
 import { AppRoutingModule }               from './app-routing.module';
 import { MessageService }                 from './message.service';
 import { MessageComponent }               from './message.component';
+import { CanvasComponent }                from './canvas.component';
 
 @NgModule({
 	imports: [
@@ -31,7 +32,8 @@ import { MessageComponent }               from './message.component';
 		FilmsListComponent,
 		FilmDetailsComponent,
 		FilmSearchComponent,
-		MessageComponent
+		MessageComponent,
+		CanvasComponent
 	],
 	providers: [
 		FilmService, FilmSearchService, MessageService
