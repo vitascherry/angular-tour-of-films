@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:8080/api/film',
+  api_url: '/api/film',
   assets_url: './assets'
 };
