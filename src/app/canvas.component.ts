@@ -23,7 +23,7 @@ export class CanvasComponent implements AfterViewInit {
   @Input() public height = 400;
 
   private cx: CanvasRenderingContext2D;
-
+  
   public ngAfterViewInit() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.cx = canvasEl.getContext('2d');
@@ -74,6 +74,10 @@ export class CanvasComponent implements AfterViewInit {
       this.cx.lineTo(currentPos.x, currentPos.y);
       this.cx.stroke();
     }
+  }
+  
+  public changeColor(color: string) {
+	  this.cx.strokeStyle = color;
   }
 
 }

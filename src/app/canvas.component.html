@@ -1,4 +1,17 @@
 <div class="container">
 	<h4>Draw a wish</h4>
+	<label>Choose stick color</label>
+	<table>
+		<tr>
+			<td>Red</td>
+			<td>Green</td>
+			<td>Blue</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" id="redColorCheckBox" (change)="changeColor('#ff0000')"></td>
+			<td><input type="checkbox" id="greenColorCheckBox" (change)="changeColor('#00ff00')"></td>
+			<td><input type="checkbox" id="blueColorCheckBox" (change)="changeColor('#0000ff')"></td>
+		</tr>
+	</table>
 	<canvas #canvas></canvas>
 </div>
